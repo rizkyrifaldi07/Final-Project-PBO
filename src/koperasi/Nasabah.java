@@ -1,85 +1,58 @@
-package finalprojectpbo;
+package koperasi;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import java.util.*;
+import javafx.beans.property.*;
 
-import java.util.ArrayList;
-
-/**
- * @author Rizky
- */
 public abstract class Nasabah {
-    protected IntegerProperty id;
-    protected StringProperty nama;
-    protected StringProperty alamat;
-    private IntegerProperty rekNum;
-    protected ArrayList <Rekening> rekening;
+    protected IntegerProperty ID;
+    protected StringProperty name;
+    protected StringProperty address;
+    protected IntegerProperty numAccount;
+    protected ArrayList<Rekening> rekening;
 
-    public Nasabah(Integer id, String nama, String alamat, ArrayList<Rekening> rekening) {
-        this.id = new SimpleIntegerProperty(id);
-        this.nama = new SimpleStringProperty(nama);
-        this.alamat = new SimpleStringProperty(alamat);
-        this.rekNum = new SimpleIntegerProperty(rekening.size());
+    public Nasabah(int ID, String name, String address, ArrayList<Rekening> rekening) {
+        this.ID = new SimpleIntegerProperty(ID);
+        this.name = new SimpleStringProperty(name);
+        this.address = new SimpleStringProperty(address);
         this.rekening = rekening;
+        this.numAccount = new SimpleIntegerProperty(this.rekening.size());
+    }
+    
+    public Nasabah(int ID, String name, String address, Rekening rekening) {
+        this.rekening = new ArrayList<>();
+        this.ID = new SimpleIntegerProperty(ID);
+        this.name = new SimpleStringProperty(name);
+        this.address = new SimpleStringProperty(address);
+        this.rekening.add(rekening);
+        this.numAccount = new SimpleIntegerProperty(this.rekening.size());
+    }
+    
+    public int getID() {
+        return ID.get();
     }
 
-    public Nasabah(Integer id, String nama, String alamat, Rekening rekenings) {
-        rekening = new ArrayList<>();
-        this.id = new SimpleIntegerProperty(id);
-        this.nama = new SimpleStringProperty(nama);
-        this.alamat = new SimpleStringProperty(alamat);
-        this.rekNum = new SimpleIntegerProperty(rekening.size());
-        this.rekening.add(rekenings);
+    public void setID(int ID) {
+        this.ID.set(ID);
     }
 
-    public Integer getId() {
-        return id.get();
+    public String getName() {
+        return name.get();
     }
 
-    public IntegerProperty idProperty() {
-        return id;
+    public void setName(String name) {
+        this.name.set(name);
     }
 
-    public void setId(int id) {
-        this.id.set(id);
+    public String getAddress() {
+        return address.get();
     }
 
-    public String getNama() {
-        return nama.get();
+    public void setAddress(String address) {
+        this.address.set(address);
     }
 
-    public StringProperty namaProperty() {
-        return nama;
-    }
-
-    public void setNama(String nama) {
-        this.nama.set(nama);
-    }
-
-    public String getAlamat() {
-        return alamat.get();
-    }
-
-    public StringProperty alamatProperty() {
-        return alamat;
-    }
-
-    public void setAlamat(String alamat) {
-        this.alamat.set(alamat);
-    }
-
-    public Integer getRekNum() {
-        return rekNum.get();
-    }
-
-    public IntegerProperty rekNumProperty() {
-        return rekNum;
-    }
-
-    public void setRekNum(int rekNum) {
-        this.rekNum.set(rekNum);
+    public int getNumAccount() {
+        return numAccount.get();
     }
 
     public ArrayList<Rekening> getRekening() {
@@ -89,7 +62,22 @@ public abstract class Nasabah {
     public void setRekening(ArrayList<Rekening> rekening) {
         this.rekening = rekening;
     }
-
-    abstract public void print();
-
+    
+    public IntegerProperty IDProperty(){
+        return this.ID;
+    }
+    
+    public StringProperty nameProperty(){
+        return this.name;
+    }
+    
+    public StringProperty addressProperty(){
+        return this.address;
+    }
+    
+    public IntegerProperty numAccountProperty(){
+        return this.numAccount;
+    }
+    
+    public abstract void print();
 }

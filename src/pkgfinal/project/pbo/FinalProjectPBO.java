@@ -1,25 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pkgfinal.project.pbo;
 
+import database.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import koperasi.*;
 
-/**
- *
- * @author adiha
- */
 public class FinalProjectPBO extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("formNasabah.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -27,11 +20,14 @@ public class FinalProjectPBO extends Application {
         stage.show();
     }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         launch(args);
+//        dbHelper db = new dbHelper();
+//        db.createTable();
+//        rekeningDataModel datamodel = new rekeningDataModel();
+//        Rekening rek = new Rekening(1,1);
+//        Perusahaan nasabahIndividu = new Perusahaan(1,"Adiwijaya","Gisting","120",rek);
+//        datamodel.addNasabah(nasabahIndividu);
     }
     
 }

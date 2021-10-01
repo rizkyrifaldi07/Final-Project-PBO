@@ -1,48 +1,35 @@
+package koperasi;
 
 import java.util.ArrayList;
+import javafx.beans.property.*;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+public class Perusahaan extends Nasabah{
+    private StringProperty nib;
 
-/**
- *
- * @author adiha
- */
-class Perusahaan extends Nasabah{
-    /**
-     * @return the nib
-     */
+    public Perusahaan(int ID, String name, String address, String nib, ArrayList<Rekening> rekening) {
+        super(ID, name, address, rekening);
+        this.nib = new SimpleStringProperty(nib);
+    }
+
+    public Perusahaan(int ID, String name, String address, String nib, Rekening rekening) {
+        super(ID, name, address, rekening);
+        this.nib = new SimpleStringProperty(nib);
+    }
+    
     public String getNib() {
-        return nib;
+        return nib.get();
     }
 
-    /**
-     * @param nib the nib to set
-     */
     public void setNib(String nib) {
-        this.nib = nib;
+        this.nib.set(nib);
     }
     
-    private String nib;
-    
-    public Perusahaan(String nib, String nama, String alamat, ArrayList<Rekening> rekening) {
-        super(nama, alamat, rekening);
-        this.setNib(nib);
+    public StringProperty nibProperty(){
+        return this.nib;
     }
     
     @Override
     public void print() {
-        System.out.println("Nama: " + this.nama);
-        System.out.println("Alamat: " + this.alamat);
-        System.out.println("NIB: " + this.nib);
-        System.out.println("===========================================");
-        System.out.println("No Rekening                     Saldo");
-        System.out.println("===========================================");
-        for(Rekening i : this.rekening){
-            System.out.println(String.format("%-27d%.2f", i.getNoRekening(), i.getSaldo()));
-        }
+        
     }
 }

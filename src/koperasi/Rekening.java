@@ -1,32 +1,45 @@
+package koperasi;
+
+import javafx.beans.property.*;
 
 public class Rekening {
-
-    int noRekening;
-    double saldo;
-
+    private IntegerProperty noRekening;
+    private DoubleProperty saldo;
 
     public Rekening(int noRekening, double saldo) {
-        this.noRekening = noRekening;
-        this.saldo = saldo;
+        this.noRekening = new SimpleIntegerProperty(noRekening);
+        this.saldo = new SimpleDoubleProperty(saldo);
     }
     
-
-    public void tambahSaldo (double jumlah)
-    {
-        saldo += jumlah;
-        System.out.println("Saldo telah ditambah menjadi : "+ saldo);
-
-
+    public int getNoRekening() {
+        return noRekening.get();
     }
 
-    public void tarikTunai (double jumlah)
-    {
-        saldo -= jumlah;
+    public void setNoRekening(int noRekening) {
+        this.noRekening.set(noRekening);
+    }
+    
+    public double getSaldo() {
+        return saldo.get();
+    }
 
-        System.out.println("Saldo berkurang menjadi : "+ saldo);
-        if (saldo <= 0)
-        {
-            System.out.println("Maaf Saldo tidak cukup");
-        }
+    public void setSaldo(double saldo) {
+        this.saldo.set(saldo);
+    }
+    
+    public void tambahSaldo(double jumlah){
+        this.saldo.set(this.getSaldo() + jumlah);
+    }
+    
+    public void tarikTunai(double jumlah){
+        this.saldo.set(this.getSaldo() - jumlah);
+    }
+    
+    public IntegerProperty noRekeningProperty(){
+        return this.noRekening;
+    }
+    
+    public DoubleProperty saldoProperty(){
+        return this.saldo;
     }
 }

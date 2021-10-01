@@ -1,66 +1,50 @@
+package koperasi;
 
 import java.util.ArrayList;
+import javafx.beans.property.*;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+public class Individu extends Nasabah{
+    private LongProperty nik;
+    private LongProperty npwp;
 
-/**
- *
- * @author adiha
- */
-class Individu extends Nasabah{
+    public Individu(int ID, String name, String address, long nik, long npwp, ArrayList<Rekening> rekening) {
+        super(ID, name, address, rekening);
+        this.nik = new SimpleLongProperty(nik);
+        this.npwp = new SimpleLongProperty(npwp);
+    }
 
-    /**
-     * @return the nik
-     */
+    public Individu(int ID, String name, String address, long nik, long npwp, Rekening rekening) {
+        super(ID, name, address, rekening);
+        this.nik = new SimpleLongProperty(nik);
+        this.npwp = new SimpleLongProperty(npwp);
+    }
+
     public long getNik() {
-        return nik;
+        return nik.get();
     }
 
-    /**
-     * @param nik the nik to set
-     */
     public void setNik(long nik) {
-        this.nik = nik;
+        this.nik.set(nik);
     }
 
-    /**
-     * @return the npwp
-     */
     public long getNpwp() {
-        return npwp;
+        return npwp.get();
     }
 
-    /**
-     * @param npwp the npwp to set
-     */
-    public void setNpwp(long npwp) {
-        this.npwp = npwp;
+    public void setBirhtdate(long npwp) {
+        this.npwp.set(npwp);
     }
     
-    public long nik;
-    public long npwp;
-    
-    public Individu(long nik, long npwp, String nama, String alamat, ArrayList<Rekening> rekening) {
-        super(nama, alamat, rekening);
-        this.setNik(nik);
-        this.setNpwp(npwp);
+    public LongProperty nikProperty(){
+        return this.nik;
     }
     
+    public LongProperty npwpProperty(){
+        return this.npwp;
+    }
+
     @Override
-    public void print(){
-        System.out.println("Nama: " + this.nama);
-        System.out.println("Alamat: " + this.alamat);
-        System.out.println("NIK: " + this.nik);
-        System.out.println("NPWP: " + this.npwp);
-        System.out.println("===========================================");
-        System.out.println("No Rekening                     Saldo");
-        System.out.println("===========================================");
-        for(Rekening i : this.rekening){
-            System.out.println(String.format("%-27d%.2f", i.getNoRekening(), i.getSaldo()));
-        }
+    public void print() {
+        
     }
 }
