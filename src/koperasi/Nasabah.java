@@ -17,7 +17,6 @@ public abstract class Nasabah {
         this.rekening = rekening;
         this.numAccount = new SimpleIntegerProperty(this.rekening.size());
     }
-    
     public Nasabah(int ID, String name, String address, Rekening rekening) {
         this.rekening = new ArrayList<>();
         this.ID = new SimpleIntegerProperty(ID);
