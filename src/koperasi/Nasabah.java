@@ -43,7 +43,7 @@ public abstract class Nasabah {
         this.name.set(name);
     }
 
-    public String getAddress() {
+    public String getAddress()  {
         return address.get();
     }
 
